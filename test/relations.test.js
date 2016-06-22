@@ -3918,7 +3918,7 @@ describe('relations', function() {
       tmp = getTransientDataSource({ defaultIdType: Number });
       // db = getSchema();
       Person = db.define('Person', { name: String });
-      Address = tmp.define('Address', { street: String });
+      Address = tmp.define('Address', { street: String }, { forceId: false });
       Address.validatesPresenceOf('street');
 
       db.automigrate(['Person'], done);
@@ -4190,7 +4190,7 @@ describe('relations', function() {
       tmp = getTransientDataSource();
       // db = getSchema();
       Person = db.define('Person', { name: String });
-      Address = tmp.define('Address', { street: String });
+      Address = tmp.define('Address', { street: String }, { forceId: false });
       Address.validatesPresenceOf('street');
 
       db.automigrate(['Person'], done);
@@ -4486,9 +4486,9 @@ describe('relations', function() {
 
     before(function() {
       // db = getSchema();
-      Category = db.define('Category', { name: String });
-      Job = db.define('Job', { name: String });
-      Link = db.define('Link', { name: String, notes: String });
+      Category = db.define('Category', { name: String }, { forceId: false });
+      Job = db.define('Job', { name: String }, { forceId: false });
+      Link = db.define('Link', { name: String, notes: String }, { forceId: false });
     });
 
     it('can be declared', function(done) {

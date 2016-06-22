@@ -20,7 +20,7 @@ describe('crud-with-options', function() {
       role: { type: String, index: true },
       order: { type: Number, index: true, sort: true },
       vip: { type: Boolean },
-    });
+    }, { forceId: false });
     options = {};
     filter = { fields: ['name', 'id'] };
 

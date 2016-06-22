@@ -308,7 +308,7 @@ describe('manipulation', function() {
     it('should refuse to create object with duplicate id', function(done) {
       // NOTE(bajtos) We cannot reuse Person model here,
       // `settings.forceId` aborts the CREATE request at the validation step.
-      var Product = db.define('ProductTest', { name: String });
+      var Product = db.define('ProductTest', { name: String }, { forceId: false });
       db.automigrate('ProductTest', function(err) {
         if (err) return done(err);
 
@@ -779,7 +779,7 @@ describe('manipulation', function() {
           title: { type: String, length: 255, index: true },
           content: { type: String },
           comments: [String],
-        });
+        }, { forceId: false });
         ds.automigrate('Post', done);
       });
 
@@ -996,7 +996,7 @@ describe('manipulation', function() {
           title: { type: String, length: 255, index: true },
           content: { type: String },
           comments: [String],
-        });
+        }, { forceId: false });
         ds.automigrate('Post', done);
       });
       beforeEach(function(done) {
