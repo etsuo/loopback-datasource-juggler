@@ -26,6 +26,17 @@ describe('basic-querying', function() {
 
   });
 
+  describe('forceId', function() {
+    it('returns error when default forceId is true', function(done) {
+      User.create({ name: 'a', id: 1 })
+        .then()
+        .catch(function(err) {
+          err.message.should.match(/can\'t be set/);
+          done();
+        });
+    });
+  });
+
   describe('ping', function() {
     it('should be able to test connections', function(done) {
       db.ping(function(err) {
