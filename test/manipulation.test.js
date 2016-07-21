@@ -61,6 +61,21 @@ describe('manipulation', function() {
       Person.destroyAll(done);
     });
 
+    describe('forceId', function() {
+      before(function(done) {
+        TestForceId = db.define('TestForceId');
+        db.automigrate('TestForceId', done);
+      });
+
+      it('it defaults to forceId:true for generated id property', function(done) {
+        TestForceId.create({ id: 1 }, function(err, p) {
+          should.exist(err);
+          err.message.should.match(/can\'t be set/);
+          done();
+        });
+      });
+    });
+
     it('should create instance', function(done) {
       Person.create({ name: 'Anatoliy' }, function(err, p) {
         p.name.should.equal('Anatoliy');
