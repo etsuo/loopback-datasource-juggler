@@ -68,7 +68,7 @@ describe('manipulation', function() {
       });
 
       it('it defaults to forceId:true for generated id property', function(done) {
-        TestForceId.create({ id: 1 }, function(err, p) {
+        TestForceId.create({ id: 1 }, function(err, t) {
           should.exist(err);
           err.message.should.match(/can\'t be set/);
           done();
