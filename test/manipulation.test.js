@@ -1011,10 +1011,12 @@ describe('manipulation', function() {
           title: { type: String, length: 255, index: true },
           content: { type: String },
           comments: [String],
-        }, { forceId: false });
+        });
         ds.automigrate('Post', done);
       });
       beforeEach(function(done) {
+        // TODO(bajtos) add API to lib/observer - remove observers for all hooks
+        Post._observers = {};
         Post.destroyAll(function() {
           Post.create({ title: 'a', content: 'AAA' }, function(err, p) {
             if (err) return done(err);
