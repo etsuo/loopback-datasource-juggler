@@ -658,18 +658,17 @@ describe('manipulation', function() {
   });
 
   describe('updateOrCreate', function() {
-    var ds = getSchema();
     var Post, Todo;
 
     before('prepare "Post" and "Todo" models', function(done) {
-      Post = ds.define('Post', {
+      Post = db.define('Post', {
         title: { type: String, id: true },
         content: { type: String },
       });
       Todo = db.define('Todo', {
         content: String,
       });
-      ds.automigrate(['Post', 'Todo'], done);
+      db.automigrate(['Post', 'Todo'], done);
     });
 
     beforeEach(function deleteModelsInstances(done) {
